@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz 14 de Febrero</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" sizes="192x192" href="android-chrome-192x192.png">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; 
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #corazon {
+            width: 100px;
+            margin-top: 20px;
+            animation: palpitar 1s infinite alternate;
+            cursor: pointer; 
+        }
+
+        button {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #mensaje {
+            color: #e91e63;
+            font-weight: bold;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #margarita {
+            width: 20px;
+            margin-left: 5px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        @keyframes palpitar {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes volar {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .corazonAdicional {
+            width: 20px; 
+            position: absolute;
+            animation: volar 4s ease-out; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Feliz 14 de Febrero</h1>
+        <img src="corazon.png" alt="Corazón" id="corazon" onclick="mostrarMensaje()">
+        <p>¡Celebremos el amor!</p>
+        <p id="mensaje" class="oculto"> Te quiero coshita. <img src="margarita.png" alt="Margarita" id="margarita"></p>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            var mensaje = document.getElementById("mensaje");
+            mensaje.style.display = "block";
+
+            for (let i = 0; i < 50; i++) {
+                crearCorazon();
+            }
+        }
+
+        function crearCorazon() {
+            var corazon = document.createElement("img");
+            corazon.src = "corazon.png";
+            corazon.alt = "Corazón";
+            corazon.classList.add("corazonAdicional");
+            document.body.appendChild(corazon);
+
+            setTimeout(function () {
+                corazon.style.left = Math.random() * window.innerWidth + "px";
+                corazon.style.top = Math.random() * window.innerHeight + "px";
+            }, 0);
+
+            setTimeout(function () {
+                document.body.removeChild(corazon);
+            }, 2000); 
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
